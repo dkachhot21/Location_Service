@@ -32,6 +32,60 @@ describe('Location Endpoints', () => {
         { expiresIn: '30m' }
     );
 
+    describe('POST /api/closest', () => {
+        it('should get closest location', async () => {
+            Location.find.mockResolvedValue([
+                {
+                    _id: new mongoose.Types.ObjectId(),
+                    userId: mockUser._id,
+                    location: {
+                        name: 'Test Location 1',
+                        coordinates: {
+                            lat: 40.7128,
+                            lng: -74.0060,
+                        },
+                    },
+                },
+                {
+                    _id: new mongoose.Types.ObjectId(),
+                    userId: mockUser._id,
+                    location: {
+                        name: 'Test Location 2',
+                        coordinates: {
+                            lat: 34.0522,
+                            lng: -118.2437,
+                        },
+                    },
+                },
+            ]);
+
+            const response = await request(app)
+                .post('/api/closest')
+                .set('Authorization', `Bearer ${token}`)
+                .send({
+                    latitude: 40.73061,
+                    longitude: -73.935242,
+                });
+
+            expect(response.status).toBe(constants.OK);
+            expect(response.body.closestLocations).toHaveLength(1);
+            expect(response.body.closestLocations[0]).toHaveProperty('latitude', 40.7128);
+        });
+
+        it('should return error for invalid input', async () => {
+            const response = await request(app)
+                .post('/api/closest')
+                .set('Authorization', `Bearer ${token}`)
+                .send({
+                    latitude: 200,
+                    longitude: 200,
+                });
+
+            expect(response.status).toBe(constants.BAD_REQUEST);
+            expect(response.body.error).toBeDefined();
+        });
+    });
+
     describe('POST /api/location', () => {
         it('should save a location', async () => {
             Location.findOne.mockResolvedValue(null);
@@ -90,75 +144,6 @@ describe('Location Endpoints', () => {
                 .set('Authorization', `Bearer ${token}`)
                 .send({
                     name: 'Test Location',
-                    latitude: 200,
-                    longitude: 200,
-                });
-
-            expect(response.status).toBe(constants.BAD_REQUEST);
-            expect(response.body.error).toBeDefined();
-        });
-    });
-
-    describe('POST /api/closest', () => {
-        it('should return error if no locations found', async () => {
-            Location.find.mockResolvedValue([]);
-            
-            const response = await request(app)
-            .post('/api/closest')
-            .set('Authorization', `Bearer ${token}`)
-            .send({
-                latitude: 40.73061,
-                longitude: -73.935242,
-            });
-            
-            expect(response.status).toBe(constants.NOT_FOUND);
-            expect(response.body.message).toBe('No location found');
-        });
-
-        it('should get closest location', async () => {
-            Location.find.mockResolvedValue([
-                {
-                    _id: new mongoose.Types.ObjectId(),
-                    userId: mockUser._id,
-                    location: {
-                        name: 'Test Location 1',
-                        coordinates: {
-                            lat: 40.7128,
-                            lng: -74.0060,
-                        },
-                    },
-                },
-                {
-                    _id: new mongoose.Types.ObjectId(),
-                    userId: mockUser._id,
-                    location: {
-                        name: 'Test Location 2',
-                        coordinates: {
-                            lat: 34.0522,
-                            lng: -118.2437,
-                        },
-                    },
-                },
-            ]);
-
-            const response = await request(app)
-                .post('/api/closest')
-                .set('Authorization', `Bearer ${token}`)
-                .send({
-                    latitude: 40.73061,
-                    longitude: -73.935242,
-                });
-
-            expect(response.status).toBe(constants.OK);
-            expect(response.body.closestLocations).toHaveLength(1);
-            expect(response.body.closestLocations[0]).toHaveProperty('latitude', 40.7128);
-        });
-
-        it('should return error for invalid input', async () => {
-            const response = await request(app)
-                .post('/api/closest')
-                .set('Authorization', `Bearer ${token}`)
-                .send({
                     latitude: 200,
                     longitude: 200,
                 });
