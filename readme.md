@@ -27,7 +27,7 @@ Location Service is a Node.js application designed to provide location managemen
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/dkachhot21/Location_Service.git
    ```
 
 2. **Install dependencies:**
