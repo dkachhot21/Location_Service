@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "1c7cb11e-24c3-4f23-b087-97c2abbe14d3",
+		"name": "Mapsense",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33436511"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/api/location",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzYjA4MGM2YmYyOWM2YjNjNzY3MTI4IiwidXNlcm5hbWUiOiJka2FjaGhvdCIsImVtYWlsIjoiZGthY2hob3RAZ21haWwuY29tIn0sImlhdCI6MTcxNTIyMTIyOSwiZXhwIjoxNzE1MjIzMDI5fQ.SEGCNfS4GokJOPaFHfDbBtfIrNHwQNss-lXwmXSmeFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"temp\",\r\n    \"latitude\": 89.7749,\r\n    \"longitude\": -122.4194\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/location",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/distance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzYjA4MGM2YmYyOWM2YjNjNzY3MTI4IiwidXNlcm5hbWUiOiJka2FjaGhvdCIsImVtYWlsIjoiZGthY2hob3RAZ21haWwuY29tIn0sImlhdCI6MTcxNTIwMzUxNiwiZXhwIjoxNzE1MjA1MzE2fQ.Xi-2Oy9uNFpwQ96ZgJploEuEvfh55nnITs9Xmwxm2mE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"location1\": {\r\n        \"latitude\": 89.7749,\r\n        \"longitude\": -122.4194\r\n    },\r\n    \"location2\": {\r\n        \"latitude\": 37.7749,\r\n        \"longitude\": -122.4194\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/distance",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"distance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/closest",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzYjA4MGM2YmYyOWM2YjNjNzY3MTI4IiwidXNlcm5hbWUiOiJka2FjaGhvdCIsImVtYWlsIjoiZGthY2hob3RAZ21haWwuY29tIn0sImlhdCI6MTcxNTIyMTIyOSwiZXhwIjoxNzE1MjIzMDI5fQ.SEGCNfS4GokJOPaFHfDbBtfIrNHwQNss-lXwmXSmeFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"latitude\": 89.7749,\r\n    \"longitude\": -122.4194\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/closest",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"closest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/user/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"dkachhot\",\r\n    \"email\":\"dkachhot@gmail.com\",\r\n    \"password\":\"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/user/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"dkachhot@gmail.com\",\r\n    \"password\":\"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/user/current",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjYzYjA4MGM2YmYyOWM2YjNjNzY3MTI4IiwidXNlcm5hbWUiOiJka2FjaGhvdCIsImVtYWlsIjoiZGthY2hob3RAZ21haWwuY29tIn0sImlhdCI6MTcxNTIwMzUxNiwiZXhwIjoxNzE1MjA1MzE2fQ.Xi-2Oy9uNFpwQ96ZgJploEuEvfh55nnITs9Xmwxm2mE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/user/current",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"current"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
