@@ -43,7 +43,7 @@ Create a `.env` file in the root directory and add the following variables:
 
 ```plaintext
 PORT=3000
-MONGODB_URI=<Create a MongoDB Cluster and save the connection string here>
+DB_CONNECTION_STRING=<Create a MongoDB Cluster and save the connection string here>
 ACCESS_TOKEN_KEY=<Secrete_Key_for_JWT>
 ```
 
