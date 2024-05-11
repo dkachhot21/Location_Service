@@ -26,6 +26,11 @@ const options = (PORT) => ({
                 url: `http://localhost:${PORT}`,
                 description: 'Development server',
             },
+            {
+                url: 'https://location-service-zv1e.onrender.com',
+                description: 'live link server'
+             },
+
         ],
     },
     apis: ['./routes/*.js'], // Path to the API routes files
